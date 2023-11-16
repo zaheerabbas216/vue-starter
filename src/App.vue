@@ -180,16 +180,20 @@ our methods as well  -->
   <button @click="volume += 2">Increase volume</button>
   <button @click="volume -= 2">Decrease volumn</button>
 
-  <GreetVue />
+  <!-- we also can pass the props to the component same as the react js -->
+  <GreetVue name="bruce" />
+  <SuperherosVue name="Bruce" superheroname="batman" />
 </template>
 
 <script>
 import GreetVue from "./components/Greet.vue";
+import SuperherosVue from "./components/Superheros.vue";
 
 export default {
   name: "App",
   components: {
     GreetVue,
+    SuperherosVue,
   },
   data() {
     return {
