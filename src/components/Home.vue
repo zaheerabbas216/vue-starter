@@ -54,7 +54,7 @@
   </p>
 
   <!-- we can also bind the style objects to the directive as shwon , first you need to create an obejct
-  with the styles in the js and then you need to use it in the template as shown in the example -->
+  with the styles in the js and then you need to"BruceWayne" use it in the template as shown in the example -->
   <p v-bind:style="succcessStyled">
     Success styled with the object in the inline
   </p>
@@ -183,20 +183,25 @@ our methods as well  -->
   <!-- we also can pass the props to the component same as the react js -->
   <GreetVue name="bruce" />
   <SuperherosVue name="Bruce" superheroname="batman" />
+  <FooterVue @clicked="onClickChild" />
+  <p>{{ valuefromchild }}</p>
 </template>
 
 <script>
 import GreetVue from "./Greet.vue";
 import SuperherosVue from "./Superheros.vue";
+import FooterVue from "./Footer.vue";
 
 export default {
   name: "HomeVue",
   components: {
     GreetVue,
     SuperherosVue,
+    FooterVue,
   },
   data() {
     return {
+      valuefromchild: "",
       formValues: {
         name: "",
         age: "",
@@ -242,6 +247,11 @@ export default {
       e.preventDefault();
       console.log("the form values are", this.formValues);
     },
+    onClickChild(value, valueone) {
+      this.valuefromchild = value;
+      console.log("the value is", value);
+      console.log("another value is", valueone);
+    },
   },
 
   // the computed property can be used to write the piece of logic in one place and then we use the property
@@ -251,6 +261,11 @@ export default {
     fullnamecomputed() {
       return `${this.firstname}, ${this.lastname}`;
     },
+  },
+  provide() {
+    return {
+      fullname: this.firstname,
+    };
   },
 
   // watchers , the watchers are used to watch the data of the value of the var closely to execute the funciton for
