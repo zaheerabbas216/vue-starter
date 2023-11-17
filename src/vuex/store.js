@@ -11,7 +11,7 @@ export default createStore({
     counts: 0,
     userdata: {},
   },
-  // here we
+  // here we add the logic to update the global state data
   mutations: {
     UPDATE_FAVS(state, payload) {
       state.favs = payload;
@@ -26,6 +26,7 @@ export default createStore({
       state.userdata = payload;
     },
   },
+  // then here we will then use the mutate in the action to update the data in the state.
   actions: {
     addtofav(context, payload) {
       const fav = context.state.favs;
